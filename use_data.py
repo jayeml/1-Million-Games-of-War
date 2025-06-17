@@ -15,7 +15,7 @@ def create_graph(dataset, name, bins):
 df = pd.read_csv("data.csv")
 
 length = df.shape[0]
-threshold = 500
+threshold = 500 # threshold for line and scatter graphs
 print(length)
 
 # Print
@@ -63,7 +63,7 @@ for t in range(0, max_diff + 6, 5):
     num_games.append(total_games)
 
 plt.grid(True, zorder=0)
-plt.scatter(xs, ys, color="skyblue", zorder=3)
+plt.scatter(xs, ys, color="darkblue", zorder=3)
 plt.xlabel("Minimum Starting Hand Lead")
 plt.ylabel("Win % with Stronger Hand")
 plt.title(f"Filtered Win Rate vs Hand Difference (Freq > {threshold})")
@@ -77,7 +77,7 @@ valid_diffs = counts[counts > threshold].index
 filtered_df = df[df['Starting Hand Difference'].isin(valid_diffs)]
 avg_lengths_filtered = filtered_df.groupby('Starting Hand Difference')['Turns'].mean()
 
-plt.plot(avg_lengths_filtered.index, avg_lengths_filtered.values, color='skyblue')
+plt.plot(avg_lengths_filtered.index, avg_lengths_filtered.values, color='darkblue')
 plt.xlabel('Starting Hand Difference (Player 1 - Player 2)')
 plt.ylabel('Average Game Length')
 plt.title(f'Average Game Length vs Starting Hand Difference (Freq > {threshold})')
