@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-
+from statistics import mode
 
 def create_graph(dataset, name, bins):
     plt.hist(dataset, bins=bins, color='skyblue', edgecolor='black', zorder=2)
@@ -25,6 +25,10 @@ df2 = df[["Turns", "Wars", "Starting Hand Difference"]]
 print(df2.describe())
 
 print(f"Longest War: {max(df['Longest War'].tolist())}")
+
+print(mode(df['Turns'].tolist()))
+print(mode(df['Wars'].tolist()))
+print(mode(df['Starting Hand Difference'].tolist()))
 
 # Graphs
 
